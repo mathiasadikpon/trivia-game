@@ -24,3 +24,10 @@ function getTriviaQuestion() {
     }, 1000); // Delay of 1 second
   });
 }
+
+// Step 3: Display the Trivia Question
+function displayQuestion(triviaQuestion) {
+  questionDiv.textContent = triviaQuestion.question; // give new content to the div
+  answerDiv.value = ""; // reset the answer field
+  feedbackDiv.textContent = ""; // reset the feedback div
+}
