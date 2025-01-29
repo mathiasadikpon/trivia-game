@@ -1,0 +1,9 @@
+// Global variables
+// Call the first variable questionDiv and select the DOM element containing the #question id.
+let questionDiv = document.querySelector('#question')
+// Call the second variable answerDiv and select the DOM element containing the #answer id.
+let answerDiv = document.getElementById('answer');
+// Call the third variable feedbackDiv and select the DOM element containing the #feedback id.
+let feedbackDiv = document.querySelector('#feedback');
+// Create a fourth variable using let and call it currentQuestion, and give it an initial value of null. This variable will store the question that is returned from the Promise.
+let currentQuestion = null;
