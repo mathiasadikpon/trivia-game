@@ -16,7 +16,7 @@ function getTriviaQuestion() {
       // Code to fetch random trivia will go here
       const index = Math.floor(Math.random() * questions.length);
       const question = questions[index];
-      if (index > questions.length) {
+      if (index >= questions.length) {
         reject("An error occurred while fetching the trivia question.");
       } else {
         resolve(question);
@@ -31,3 +31,33 @@ function displayQuestion(triviaQuestion) {
   answerDiv.value = ""; // reset the answer field
   feedbackDiv.textContent = ""; // reset the feedback div
 }
+
+// Step 4: Handle the "New Question" Button
+
+document.getElementById("questionBtn").addEventListener("click", () => {
+  getTriviaQuestion()
+    .then((question) => {
+      currentQuestion = question;
+      displayQuestion(currentQuestion);
+    })
+    .catch((error) => console.log(error));
+});
+
+// Step 5: Handle the "Submit Answer" Button
+document.querySelector("#answerBtn").addEventListener("click", () => {
+  let feedbackMessage;
+  const userAnswer = answerDiv.value.trim().toLowerCase();
+  if (
+    currentQuestion && userAnswer ===
+    currentQuestion.answer.trim().toLowerCase()
+  ) {
+    //feedbackDiv.textContent = `Correct!`;
+    feedbackDiv.style.color = `green`;
+    feedbackMessage = `Great job! Your answer is correct.`;
+  } else {
+    //feedbackDiv.innerHTML = `Wrong!`;
+    feedbackDiv.style.color = `red`;
+    feedbackMessage = `Sorry, that is incorrect. The correct answer is: "${currentQuestion.answer}". Try another question!`;
+  }
+  feedbackDiv.textContent = feedbackMessage;
+});
